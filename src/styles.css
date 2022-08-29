@@ -1,0 +1,15 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+main{
+  max-width: 85vw;
+  margin: 0 auto;
+  padding: 25px;
+}

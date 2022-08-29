@@ -1,0 +1,89 @@
+<h2>Gerenciamento de usuários</h2>
+
+<button mat-fab color="primary" class="fabAdd" (click)="create()"><mat-icon>add</mat-icon></button>
+
+<div>
+  <!-- tabela -->
+  <mat-table [dataSource]="users">
+
+    <!-- COLUNA 01 -->
+    <ng-container matColumnDef="name">
+
+      <!-- cabeçalho -->
+      <mat-header-cell *matHeaderCellDef>
+        Nome
+      </mat-header-cell>
+
+      <!--celula - conteudo-->
+      <mat-cell *matCellDef="let user">
+        {{user.name}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- COLUNA 02 -->
+    <ng-container matColumnDef="username">
+
+      <!-- cabeçalho -->
+      <mat-header-cell *matHeaderCellDef>
+        Nome de Usuário
+      </mat-header-cell>
+
+      <!--celula - conteudo-->
+      <mat-cell *matCellDef="let user">
+        {{user.username}}
+      </mat-cell>
+    </ng-container>
+
+
+    <!-- COLUNA 03-->
+    <ng-container matColumnDef="actions">
+
+      <!-- cabeçalho -->
+      <mat-header-cell *matHeaderCellDef>
+        Ações
+      </mat-header-cell>
+
+      <!--celula - conteudo-->
+      <mat-cell *matCellDef="let user">
+
+        <!--Botao editar-->
+        <button mat-button color="accent" (click)="select(user)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-button color="warn" >
+          <mat-icon>remove_circle</mat-icon>
+        </button>
+
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns"></mat-row>
+  </mat-table>
+</div>
+
+<div *ngIf="selectedUser" class="editArea">
+  <h2>Dados de Usuário</h2>
+
+  <mat-form-field class="formField">
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" [(ngModel)]="selectedUser.name" >
+  </mat-form-field>
+
+  <mat-form-field class="formField">
+    <mat-label>Nome de usuário</mat-label>
+    <input matInput type="text" [(ngModel)]="selectedUser.username">
+  </mat-form-field>
+
+  <mat-form-field class="formField">
+    <mat-label>Senha</mat-label>
+    <input matInput type="password" [(ngModel)]="selectedUser.pass">
+  </mat-form-field>
+
+  <br>
+  <br>
+  <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+
+  <button mat-raised-button color="primary" (click)="save()" class="btn">Salvar</button>
+</div>

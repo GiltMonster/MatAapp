@@ -1,0 +1,11 @@
+.title{
+  display: flex;
+  align-items: center;
+}
+.title-h2{
+  margin: 5px;
+}
+
+.start-text{
+  margin-top: 20px;
+}
